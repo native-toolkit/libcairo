@@ -5,6 +5,9 @@
 		<compilerflag value="-I${NATIVE_TOOLKIT_PATH}/cairo/src" />
 		<compilerflag value="-I${NATIVE_TOOLKIT_PATH}/pixman/include" />
 		<compilerflag value="-DCAIRO_WIN32_STATIC_BUILD" if="windows" />
+		<compilerflag value="-DCAIRO_HAS_PTHREAD" unless="windows" />
+		<compilerflag value="-DHAVE_STDINT_H" unless="windows" />
+		<compilerflag value="-DHAVE_UINT64_T" unless="windows" />
 
 		<file name="${NATIVE_TOOLKIT_PATH}/cairo/src/cairo-analysis-surface.c" />
 		<file name="${NATIVE_TOOLKIT_PATH}/cairo/src/cairo-arc.c" />
