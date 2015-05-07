@@ -36,21 +36,21 @@
 // #define CAIRO_HAS_TEST_SURFACES 1
 // #define CAIRO_HAS_TEE_SURFACE 1
 // #define CAIRO_HAS_XML_SURFACE 1
-// #define CAIRO_HAS_PTHREAD 1
+#define CAIRO_HAS_PTHREAD 1
 // #define CAIRO_HAS_GOBJECT_FUNCTIONS 1
 // #define CAIRO_HAS_TRACE 1
 // #define CAIRO_HAS_INTERPRETER 1
 // #define CAIRO_HAS_SYMBOL_LOOKUP 1
-// #define CAIRO_HAS_DLSYM 1
+#define CAIRO_HAS_DLSYM 1
 
 
 // #define HAVE_BYTESWAP_H 1
 // #define HAVE_INTTYPES_H 1
-// #define HAVE_STDINT_H 1
+#define HAVE_STDINT_H 1
 // #define HAVE_SYS_INT_TYPES_H 1
-// #define HAVE_UNISTD_H 1
+#define HAVE_UNISTD_H 1
 // #define HAVE_UINT128_T 1
-// #define HAVE_UINT64_T 1
+#define HAVE_UINT64_T 1
 
 
 // #define HAVE_INTEL_ATOMIC_PRIMITIVES 1
