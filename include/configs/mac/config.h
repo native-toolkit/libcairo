@@ -44,7 +44,7 @@
 #define CAIRO_HAS_DLSYM 1
 
 
-#define HAVE_BYTESWAP_H 1
+// #define HAVE_BYTESWAP_H 1
 // #define HAVE_INTTYPES_H 1
 #define HAVE_STDINT_H 1
 // #define HAVE_SYS_INT_TYPES_H 1
