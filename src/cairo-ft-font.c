@@ -808,12 +808,12 @@ _cairo_ft_unscaled_font_set_scale (cairo_ft_unscaled_font_t *unscaled,
 
     assert (unscaled->face != NULL);
 
-    if (unscaled->have_scale &&
-	scale->xx == unscaled->current_scale.xx &&
-	scale->yx == unscaled->current_scale.yx &&
-	scale->xy == unscaled->current_scale.xy &&
-	scale->yy == unscaled->current_scale.yy)
-	return CAIRO_STATUS_SUCCESS;
+    //if (unscaled->have_scale &&
+	//scale->xx == unscaled->current_scale.xx &&
+	//scale->yx == unscaled->current_scale.yx &&
+	//scale->xy == unscaled->current_scale.xy &&
+	//scale->yy == unscaled->current_scale.yy)
+	//return CAIRO_STATUS_SUCCESS;
 
     unscaled->have_scale = TRUE;
     unscaled->current_scale = *scale;
