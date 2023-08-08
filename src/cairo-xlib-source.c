@@ -109,7 +109,7 @@ source (cairo_xlib_surface_t *dst, Picture picture, Pixmap pixmap)
     if (picture == None)
 	return _cairo_surface_create_in_error (_cairo_error (CAIRO_STATUS_NO_MEMORY));
 
-    source = malloc (sizeof (*source));
+    source = _cairo_malloc (sizeof (*source));
     if (unlikely (source == NULL)) {
 	XRenderFreePicture (dst->display->display, picture);
 	if (pixmap)
@@ -487,7 +487,7 @@ color_source (cairo_xlib_surface_t *dst, const cairo_color_t *color)
 	    }
 
 	    gcv.foreground = 0;
-	    gcv.foreground |= color->alpha_short >> 8 << 24;
+	    gcv.foreground |= (uint32_t)color->alpha_short >> 8 << 24;
 	    gcv.foreground |= color->red_short   >> 8 << 16;
 	    gcv.foreground |= color->green_short >> 8 << 8;
 	    gcv.foreground |= color->blue_short  >> 8 << 0;
@@ -567,7 +567,7 @@ transparent_source (cairo_xlib_surface_t *dst, const cairo_color_t *color)
 {
     cairo_xlib_display_t *display = dst->display;
     uint32_t pixel =
-	color->alpha_short >> 8 << 24 |
+	(uint32_t)color->alpha_short >> 8 << 24 |
 	color->red_short   >> 8 << 16 |
 	color->green_short >> 8 << 8 |
 	color->blue_short  >> 8 << 0;
@@ -920,7 +920,8 @@ record_source (cairo_xlib_surface_t *dst,
     recording = recording_pattern_get_surface (&pattern->base),
     status = _cairo_recording_surface_replay_with_clip (recording,
 							&matrix, &src->base,
-							NULL);
+							NULL,
+							FALSE);
     cairo_surface_destroy (recording);
     if (unlikely (status)) {
 	cairo_surface_destroy (&src->base);
@@ -966,7 +967,7 @@ surface_source (cairo_xlib_surface_t *dst,
 	_cairo_xlib_shm_surface_get_pixmap (src)) {
 	cairo_xlib_proxy_t *proxy;
 
-	proxy = malloc (sizeof(*proxy));
+	proxy = _cairo_malloc (sizeof(*proxy));
 	if (unlikely (proxy == NULL))
 	    return _cairo_surface_create_in_error (CAIRO_STATUS_NO_MEMORY);
 
